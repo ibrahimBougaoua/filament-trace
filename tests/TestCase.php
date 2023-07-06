@@ -2,9 +2,9 @@
 
 namespace IbrahimBougaoua\FilamentTrace\Tests;
 
+use IbrahimBougaoua\FilamentTrace\FilamentTraceServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use IbrahimBougaoua\FilamentTrace\FilamentTraceServiceProvider;
 
 class TestCase extends Orchestra
 {

@@ -2,9 +2,9 @@
 
 namespace IbrahimBougaoua\FilamentTrace;
 
+use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceCommand;
 
 class FilamentTraceServiceProvider extends PackageServiceProvider
 {
