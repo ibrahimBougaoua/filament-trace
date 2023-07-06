@@ -2,12 +2,20 @@
 
 namespace IbrahimBougaoua\FilamentTrace;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Filament\Navigation\UserMenuItem;
+use Filament\PluginServiceProvider;
 use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceCommand;
+use IbrahimBougaoua\FilamentTrace\FilamentTrace;
+use Spatie\LaravelPackageTools\Package;
 
-class FilamentTraceServiceProvider extends PackageServiceProvider
+class FilamentTraceServiceProvider extends PluginServiceProvider
 {
+    public function packageBooted(): void
+    {
+        if( FilamentTrace::hasMigrated() )
+            FilamentTrace::prepareModelsClassNames();
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -19,7 +27,7 @@ class FilamentTraceServiceProvider extends PackageServiceProvider
             ->name('filament-trace')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_filament-trace_table')
+            ->hasMigration('create_filament_trace_table')
             ->hasCommand(FilamentTraceCommand::class);
     }
 }

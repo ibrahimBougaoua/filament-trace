@@ -8,11 +8,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('filament_trace_table', function (Blueprint $table) {
+        Schema::create('filament_trace', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->string('name');
+            $table->string('model');
+            $table->text('content');
+            $table->enum('action',['created','updated','deleted','restored']);
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }
