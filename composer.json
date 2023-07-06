@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ibrahimbougaoua/filament-trace",
+    "description": "A Filament package is a reusable software library for PHP that provides logging and tracking functionality for CRUD operations and user interactions. It includes a logging class to capture create, read, update, delete actions, as well as user interactions like login and logout.",
     "keywords": [
-        ":vendor_name",
+        "ibrahimBougaoua",
         "laravel",
-        ":package_slug"
+        "filament-trace"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ibrahimbougaoua/filament-trace",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ibrahim",
+            "email": "ibrahim.bougaoua@etu.usthb.dz",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "IbrahimBougaoua\\FilamentTrace\\": "src/",
+            "IbrahimBougaoua\\FilamentTrace\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "IbrahimBougaoua\\FilamentTrace\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "IbrahimBougaoua\\FilamentTrace\\FilamentTraceServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentTrace": "IbrahimBougaoua\\FilamentTrace\\Facades\\FilamentTrace"
             }
         }
     },

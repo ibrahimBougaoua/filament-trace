@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace IbrahimBougaoua\FilamentTrace\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentTraceCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-trace';
 
     public $description = 'My command';
 
