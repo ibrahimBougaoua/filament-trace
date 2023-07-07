@@ -17,12 +17,12 @@ class FilamentTraceServiceProvider extends PluginServiceProvider
 
     protected function getUserMenuItems(): array
     {
-        return [
-            UserMenuItem::make()
-                ->label('Trace')
-                ->url(route('filament.resources.traces.index'))
-                ->icon('heroicon-s-eye'),
-        ];
+        return  FilamentTrace::hasMigrated() ? [
+                    UserMenuItem::make()
+                        ->label('Trace')
+                        ->url(route('filament.resources.traces.index'))
+                        ->icon('heroicon-s-eye'),
+                ] : [];
     }
 
     public function packageBooted(): void
