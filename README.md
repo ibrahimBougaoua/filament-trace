@@ -28,6 +28,12 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-trace-config"
 ```
 
+You can Truncate the traces with:
+
+```bash
+php artisan filament-trace-truncate
+```
+
 This is the contents of the published config file:
 
 ```php
@@ -39,13 +45,6 @@ Optionally, you can publish the views using
 
 ```bash
 php artisan vendor:publish --tag="filament-trace-views"
-```
-
-## Usage
-
-```php
-$filamentTrace = new IbrahimBougaoua\FilamentTrace();
-echo $filamentTrace->echoPhrase('Hello, IbrahimBougaoua!');
 ```
 
 ## Testing

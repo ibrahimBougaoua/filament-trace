@@ -4,7 +4,7 @@ namespace IbrahimBougaoua\FilamentTrace;
 
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
-use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceCommand;
+use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceTruncateCommand;
 use IbrahimBougaoua\FilamentTrace\FilamentTrace;
 use IbrahimBougaoua\FilamentTrace\Resources\TraceResource;
 use Spatie\LaravelPackageTools\Package;
@@ -43,6 +43,6 @@ class FilamentTraceServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_filament_trace_table')
-            ->hasCommand(FilamentTraceCommand::class);
+            ->hasCommand(FilamentTraceTruncateCommand::class);
     }
 }

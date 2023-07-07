@@ -1,6 +1,7 @@
 <?php
 
 namespace IbrahimBougaoua\FilamentTrace;
+use IbrahimBougaoua\FilamentTrace\Models\Trace;
 use IbrahimBougaoua\FilamentTrace\Traits\ModelsClassNames;
 use IbrahimBougaoua\FilamentTrace\Observers\GeneralObserver;
 use Schema;
@@ -22,5 +23,10 @@ class FilamentTrace
         if( Schema::hasTable('filament_trace') ) 
             return true;
         return false;
+    }
+
+    public static function truncate()
+    {
+        Trace::truncate();
     }
 }
