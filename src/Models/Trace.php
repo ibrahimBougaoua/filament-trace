@@ -2,10 +2,10 @@
 
 namespace IbrahimBougaoua\FilamentTrace\Models;
 
+use App\Models\User;
 use IbrahimBougaoua\FilamentTrace\Traits\Multitenantable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Auth;
 
 class Trace extends Model
 {
@@ -23,6 +23,6 @@ class Trace extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"user_id");
     }
 }

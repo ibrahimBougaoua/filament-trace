@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('model');
             $table->text('content');
-            $table->enum('action',['created','updated','deleted','restored']);
+            $table->enum('action',['Created','Updated','Deleted','Restored']);
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
         });

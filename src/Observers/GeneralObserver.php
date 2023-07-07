@@ -11,8 +11,8 @@ class GeneralObserver
         Trace::create([
             'name' => class_basename($model),
             'model' => get_class($model),
-            'content' => $model::with('user'),
-            'action' => 'created'
+            'content' => $model,
+            'action' => 'Created'
         ]);
     }
 
@@ -22,7 +22,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'updated'
+            'action' => 'Updated'
         ]);
     }
 
@@ -32,7 +32,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'deleted'
+            'action' => 'Deleted'
         ]);
     }
 
@@ -42,7 +42,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'restored'
+            'action' => 'Restored'
         ]);
     }
 }

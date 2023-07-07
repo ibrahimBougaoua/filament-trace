@@ -6,10 +6,25 @@ use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
 use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceCommand;
 use IbrahimBougaoua\FilamentTrace\FilamentTrace;
+use IbrahimBougaoua\FilamentTrace\Resources\TraceResource;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentTraceServiceProvider extends PluginServiceProvider
 {
+    protected array $resources = [
+        TraceResource::class,
+    ];
+
+    protected function getUserMenuItems(): array
+    {
+        return [
+            UserMenuItem::make()
+                ->label('Trace')
+                ->url(route('filament.resources.traces.index'))
+                ->icon('heroicon-s-eye'),
+        ];
+    }
+
     public function packageBooted(): void
     {
         if( FilamentTrace::hasMigrated() )
