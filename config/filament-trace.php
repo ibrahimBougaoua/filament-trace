@@ -1,4 +1,5 @@
 <?php
+
 use Filament\Pages\Actions\Action;
 use IbrahimBougaoua\FilamentTrace\FilamentTrace;
 
@@ -13,7 +14,7 @@ return [
         'service' => 'https://geolocation-db.com/json/',
         'key' => 'f2e84010-e1e9-11ed-b2f8-6b70106be3c8',
     ],
-    'browsers' => [        
+    'browsers' => [
         'Chrome' => 'Chrome',
         'Firefox' => 'Firefox',
         'Safari' => 'Safari',
@@ -39,22 +40,22 @@ return [
     ],
     'actions' => [
         'trace_truncate' => Action::make('trace_truncate')
-                    ->label('Delete all')
-                    ->action(fn () => FilamentTrace::truncate('trace'))
-                    ->color('danger')
-                    ->icon('heroicon-s-trash')
-                    ->requiresConfirmation()
-                    ->modalHeading('Delete all trace.')
-                    ->modalSubheading('Are you sure you\'d like to Delete all trace ?')
-                    ->modalButton('Yes, Delete them'),
+            ->label('Delete all')
+            ->action(fn () => FilamentTrace::truncate('trace'))
+            ->color('danger')
+            ->icon('heroicon-s-trash')
+            ->requiresConfirmation()
+            ->modalHeading('Delete all trace.')
+            ->modalSubheading('Are you sure you\'d like to Delete all trace ?')
+            ->modalButton('Yes, Delete them'),
         'logger_truncate' => Action::make('logger_truncate')
-                    ->label('Delete all')
-                    ->action(fn () => FilamentTrace::truncate('logger'))
-                    ->color('danger')
-                    ->icon('heroicon-s-trash')
-                    ->requiresConfirmation()
-                    ->modalHeading('Delete all logger.')
-                    ->modalSubheading('Are you sure you\'d like to Delete all logger ?')
-                    ->modalButton('Yes, Delete them')
+            ->label('Delete all')
+            ->action(fn () => FilamentTrace::truncate('logger'))
+            ->color('danger')
+            ->icon('heroicon-s-trash')
+            ->requiresConfirmation()
+            ->modalHeading('Delete all logger.')
+            ->modalSubheading('Are you sure you\'d like to Delete all logger ?')
+            ->modalButton('Yes, Delete them'),
     ],
-];                                                                                                                                
+];

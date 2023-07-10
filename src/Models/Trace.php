@@ -14,15 +14,15 @@ class Trace extends Model
     protected $table = 'filament_trace';
 
     protected $fillable = [
-        "name",
-        "model",
-        "content",
-        "action",
-        "user_id"
+        'name',
+        'model',
+        'content',
+        'action',
+        'user_id',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class,"user_id");
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

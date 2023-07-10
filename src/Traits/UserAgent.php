@@ -1,15 +1,17 @@
 <?php
 
 namespace IbrahimBougaoua\FilamentTrace\Traits;
+
 use Illuminate\Support\Facades\Http;
 use Request;
 
-trait UserAgent {
-
+trait UserAgent
+{
     public static function getUserLocation()
     {
-        $response = Http::get(config('filament-trace.geolocation.service') . config('filament-trace.geolocation.key') . "/" . Request::ip());
-        return  $response->json();
+        $response = Http::get(config('filament-trace.geolocation.service').config('filament-trace.geolocation.key').'/'.Request::ip());
+
+        return $response->json();
     }
 
     public static function getUserDeviceInfo()
@@ -47,7 +49,7 @@ trait UserAgent {
 
     public static function getBrowserFromUserAgent()
     {
-        $browsers =  config('filament-trace.browsers');
+        $browsers = config('filament-trace.browsers');
 
         foreach ($browsers as $browser => $keyword) {
             if (stripos(UserAgent::getUserDeviceInfo(), $keyword) !== false) {

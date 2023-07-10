@@ -12,7 +12,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'Created'
+            'action' => 'Created',
         ]);
     }
 
@@ -22,7 +22,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'Updated'
+            'action' => 'Updated',
         ]);
     }
 
@@ -32,7 +32,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'Deleted'
+            'action' => 'Deleted',
         ]);
     }
 
@@ -42,7 +42,7 @@ class GeneralObserver
             'name' => class_basename($model),
             'model' => get_class($model),
             'content' => $model,
-            'action' => 'Restored'
+            'action' => 'Restored',
         ]);
     }
 }

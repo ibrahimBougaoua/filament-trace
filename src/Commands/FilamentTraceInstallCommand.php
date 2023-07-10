@@ -14,10 +14,8 @@ class FilamentTraceInstallCommand extends Command
 
     public function handle(): int
     {
-        if( FilamentTrace::hasMigrated() )
-        {
-            if( ! TraceSetting::count() )
-            {
+        if (FilamentTrace::hasMigrated()) {
+            if (! TraceSetting::count()) {
                 TraceSetting::create([
                     'key' => 'trace',
                     'truncate' => false,

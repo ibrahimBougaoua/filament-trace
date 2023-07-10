@@ -20,7 +20,7 @@ class ManageTraces extends ManageRecords
                 ->color('primary')
                 ->icon('heroicon-o-user-group'),
             config('filament-trace.actions.trace_truncate'),
-            FilamentTrace::isStopped('trace') 
+            FilamentTrace::isStopped('trace')
             ? Action::make('start')
                 ->label('Start it')
                 ->action(fn () => FilamentTrace::sTrace('trace'))

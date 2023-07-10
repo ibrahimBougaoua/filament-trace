@@ -12,14 +12,13 @@ class TraceSetting extends Model
     protected $table = 'filament_trace_settings';
 
     protected $fillable = [
-        "key",
-        "truncate",
-        "stop",
+        'key',
+        'truncate',
+        'stop',
     ];
 
     protected $attributes = [
         'truncate' => false,
         'stop' => true,
     ];
-
 }

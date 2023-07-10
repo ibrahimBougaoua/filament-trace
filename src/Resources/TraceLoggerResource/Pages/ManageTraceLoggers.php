@@ -20,7 +20,7 @@ class ManageTraceLoggers extends ManageRecords
                 ->color('primary')
                 ->icon('heroicon-s-document-text'),
             config('filament-trace.actions.logger_truncate'),
-            FilamentTrace::isStopped('logger') 
+            FilamentTrace::isStopped('logger')
             ? Action::make('start')
                 ->label('Start it')
                 ->action(fn () => FilamentTrace::sTrace('logger'))
