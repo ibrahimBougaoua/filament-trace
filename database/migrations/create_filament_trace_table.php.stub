@@ -8,13 +8,40 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('filament_trace', function (Blueprint $table) {
+        Schema::create(config('filament-trace.tables.trace'), function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->string('model')->nullable();
+            $table->text('content')->nullable();
+            $table->enum('action',['Created','Updated','Deleted','Restored'])->default('Created');
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->timestamps();
+        });
+
+        Schema::create(config('filament-trace.tables.logger'), function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('model');
-            $table->text('content');
-            $table->enum('action',['Created','Updated','Deleted','Restored']);
+            $table->string('country_code')->nullable();
+            $table->string('country_name')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('IPv4')->nullable();
+            $table->string('state')->nullable();
+            $table->enum('browser',['Chrome','Firefox','Safari','Edge','IE','Opera','Unknown Browser'])->default('Unknown Browser');
+            $table->enum('system',['iPhone','iPad','Android','Windows Phone','Windows','Mac','Linux','Unknown System'])->default('Unknown System');
+            $table->enum('device',['Mobile','Desktop','Unknown Device'])->default('Unknown Device');
+            $table->enum('action',['Logged In','Log Out'])->default('Log Out');
             $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->timestamps();
+        });
+
+        Schema::create(config('filament-trace.tables.settings'), function (Blueprint $table) {
+            $table->id();
+            $table->enum('key',['trace','logger'])->nullable();
+            $table->boolean('truncate')->default(false);
+            $table->boolean('stop')->default(false);
             $table->timestamps();
         });
     }

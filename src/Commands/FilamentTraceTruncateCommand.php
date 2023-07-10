@@ -9,13 +9,12 @@ class FilamentTraceTruncateCommand extends Command
 {
     public $signature = 'filament-trace-truncate';
 
-    public $description = 'Filament Trace Truncate';
+    public $description = 'Filament Truncate trace table';
 
     public function handle(): int
     {
-        FilamentTrace::truncate();
-
-        $this->comment('Filament Trace Truncated.');
+        FilamentTrace::truncate('trace');
+        $this->comment('Filament trace Truncated successfully.');
 
         return self::SUCCESS;
     }

@@ -22,15 +22,22 @@ php artisan vendor:publish --tag="filament-trace-migrations"
 php artisan migrate
 ```
 
+Installation with:
+
+```bash
+php artisan filament-trace-install
+```
+
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="filament-trace-config"
 ```
 
-You can Truncate the traces with:
+You can Truncate the trace or logger with :
 
 ```bash
+php artisan filament-logger-truncate
 php artisan filament-trace-truncate
 ```
 

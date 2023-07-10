@@ -7,8 +7,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use IbrahimBougaoua\FilamentTrace\Models\Trace;
-use IbrahimBougaoua\FilamentTrace\Resources\TraceResource\Pages;
+use IbrahimBougaoua\FilamentTrace\Models\Logger;
+use IbrahimBougaoua\FilamentTrace\Resources\TraceLoggerResource\Pages;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -16,17 +16,17 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 
-class TraceResource extends Resource
+class TraceLoggerResource extends Resource
 {
-    protected static ?string $model = Trace::class;
+    protected static ?string $model = Logger::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $navigationGroup = 'Traces';
 
-    protected static ?string $navigationLabel = 'Trace';
-
-    protected static ?string $pluralLabel = 'Trace';
+    protected static ?string $navigationLabel = 'Logger';
+    
+    protected static ?string $pluralLabel = 'Logger';
 
     public static function canCreate(): bool
     {
@@ -75,33 +75,67 @@ class TraceResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                ->label('Name')
+                TextColumn::make('country_code')
+                ->label('Country code')
                 ->icon('heroicon-o-document-text')
                 ->sortable()
-                ->searchable(),
-                TextColumn::make('model')
-                ->label('Model')
+                ->searchable()
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
+                TextColumn::make('country_name')
+                ->label('Country')
                 ->sortable()
-                ->searchable(),
-                TextColumn::make('content')
-                ->icon('heroicon-o-clipboard')
-                ->limit(50)
+                ->searchable()
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
+                TextColumn::make('state')
                 ->color('secondary')
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
+                TextColumn::make('city')
+                ->label('City')
+                ->sortable()
+                ->searchable()
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
+                TextColumn::make('browser')
+                ->label('Browser')
+                ->sortable()
+                ->searchable()
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
+                TextColumn::make('system')
+                ->label('System')
+                ->sortable()
+                ->searchable()
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
+                TextColumn::make('device')
+                ->label('Device')
+                ->icon('heroicon-o-device-tablet')
+                ->sortable()
+                ->searchable()
                 ->copyable()
                 ->copyMessage('Content copied')
                 ->copyMessageDuration(1500),
                 BadgeColumn::make('action')
                 ->label('Action')
                 ->colors([
-                    'primary' => 'Restored',
-                    'secondary' => 'Updated',
-                    'success' => 'Created',
-                    'danger' => 'Deleted',
+                    'success' => 'Logged In',
+                    'danger' => 'Log Out',
                 ]),
                 TextColumn::make('user.name')
                 ->label('User')
-                ->icon('heroicon-o-user'),
+                ->icon('heroicon-o-user')
+                ->copyable()
+                ->copyMessage('Content copied')
+                ->copyMessageDuration(1500),
                 TextColumn::make('created_at')
                 ->label('Created at')
             ])
@@ -109,11 +143,26 @@ class TraceResource extends Resource
                 SelectFilter::make('action')
                 ->label('Action')
                 ->options([
-                    'Restored' => 'Restored',
-                    'Updated' => 'Updated',
-                    'Created' => 'Created',
-                    'Deleted' => 'Deleted',
+                    'Logged In' => 'Logged In',
+                    'Log Out' => 'Log Out',
                 ]),
+                SelectFilter::make('browser')
+                ->label('Browser')
+                ->options(
+                    config('filament-trace.browsers')
+                ),
+                SelectFilter::make('device')
+                ->label('Device')
+                ->options([
+                    'Unknown Device' => 'Unknown Device',
+                    'Mobile' => 'Mobile',
+                    'Desktop' => 'Desktop',
+                ]),
+                SelectFilter::make('system')
+                ->label('System')
+                ->options(
+                    config('filament-trace.systems')
+                ),
                 Tables\Filters\Filter::make('created_at')
                 ->label('Created at')->form([
                     Forms\Components\DatePicker::make('created_from')->label('Created from'),
@@ -133,7 +182,6 @@ class TraceResource extends Resource
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -143,7 +191,7 @@ class TraceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageTraces::route('/'),
+            'index' => Pages\ManageTraceLoggers::route('/'),
         ];
     }    
 }
