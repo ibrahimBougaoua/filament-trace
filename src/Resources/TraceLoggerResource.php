@@ -165,9 +165,9 @@ class TraceLoggerResource extends Resource
                     ),
                 Tables\Filters\Filter::make('created_at')
                     ->label('Created at')->form([
-                    Forms\Components\DatePicker::make('created_from')->label('Created from'),
-                    Forms\Components\DatePicker::make('created_until')->label('Created until'),
-                ])
+                        Forms\Components\DatePicker::make('created_from')->label('Created from'),
+                        Forms\Components\DatePicker::make('created_until')->label('Created until'),
+                    ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query
                             ->when(

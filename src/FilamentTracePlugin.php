@@ -24,9 +24,9 @@ class FilamentTracePlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel->pages([
-                TraceLoggerResource::class,
-                TraceResource::class,
-            ]);
+            TraceLoggerResource::class,
+            TraceResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
