@@ -16,7 +16,7 @@ class ManageTraces extends ManageRecords
         return [
             Action::make('logger')
                 ->label('Logger')
-                ->url(route('filament.resources.loggers.index'))
+                ->url(route('filament.admin.resources.loggers.index'))
                 ->color('primary')
                 ->icon('heroicon-o-user-group'),
             config('filament-trace.actions.trace_truncate'),

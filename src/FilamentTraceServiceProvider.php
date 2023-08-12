@@ -20,7 +20,7 @@ class FilamentTraceServiceProvider extends PackageServiceProvider
         parent::packageBooted();
 
         if (FilamentTrace::hasMigrated()) {
-            if (!FilamentTrace::isStopped('logger')) {
+            if (! FilamentTrace::isStopped('logger')) {
                 Event::listen(
                     Login::class,
                     LoginTrace::class
@@ -32,7 +32,7 @@ class FilamentTraceServiceProvider extends PackageServiceProvider
                 );
             }
 
-            if (!FilamentTrace::isStopped('trace')) {
+            if (! FilamentTrace::isStopped('trace')) {
                 FilamentTrace::prepareModelsClassNames();
             }
         }

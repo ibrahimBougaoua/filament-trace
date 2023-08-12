@@ -4,6 +4,7 @@ namespace IbrahimBougaoua\FilamentTrace\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -37,7 +38,7 @@ class TraceLoggerResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+                Section::make()
                     ->schema([
                         TextInput::make('name')
                             ->label('Name')
@@ -165,9 +166,9 @@ class TraceLoggerResource extends Resource
                     ),
                 Tables\Filters\Filter::make('created_at')
                     ->label('Created at')->form([
-                    Forms\Components\DatePicker::make('created_from')->label('Created from'),
-                    Forms\Components\DatePicker::make('created_until')->label('Created until'),
-                ])
+                        Forms\Components\DatePicker::make('created_from')->label('Created from'),
+                        Forms\Components\DatePicker::make('created_until')->label('Created until'),
+                    ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query
                             ->when(
