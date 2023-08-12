@@ -2,43 +2,25 @@
 
 namespace IbrahimBougaoua\FilamentTrace;
 
-use Filament\Navigation\UserMenuItem;
-use Filament\PluginServiceProvider;
 use IbrahimBougaoua\FilamentTrace\Commands\FilamentLoggerTruncateCommand;
 use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceInstallCommand;
 use IbrahimBougaoua\FilamentTrace\Commands\FilamentTraceTruncateCommand;
 use IbrahimBougaoua\FilamentTrace\Listeners\LoginTrace;
 use IbrahimBougaoua\FilamentTrace\Listeners\LogoutTrace;
-use IbrahimBougaoua\FilamentTrace\Resources\TraceLoggerResource;
-use IbrahimBougaoua\FilamentTrace\Resources\TraceResource;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Event;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentTraceServiceProvider extends PluginServiceProvider
+class FilamentTraceServiceProvider extends PackageServiceProvider
 {
-    protected array $resources = [
-        TraceResource::class,
-        TraceLoggerResource::class,
-    ];
-
-    protected function getUserMenuItems(): array
-    {
-        return FilamentTrace::hasMigrated() ? [
-            UserMenuItem::make()
-                ->label('Trace')
-                ->url(route('filament.resources.traces.index'))
-                ->icon('heroicon-s-eye'),
-        ] : [];
-    }
-
     public function packageBooted(): void
     {
         parent::packageBooted();
 
         if (FilamentTrace::hasMigrated()) {
-            if (! FilamentTrace::isStopped('logger')) {
+            if (!FilamentTrace::isStopped('logger')) {
                 Event::listen(
                     Login::class,
                     LoginTrace::class
@@ -50,7 +32,7 @@ class FilamentTraceServiceProvider extends PluginServiceProvider
                 );
             }
 
-            if (! FilamentTrace::isStopped('trace')) {
+            if (!FilamentTrace::isStopped('trace')) {
                 FilamentTrace::prepareModelsClassNames();
             }
         }
